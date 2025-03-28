@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASSET - Automatic Scheduling System for Emily's Team</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .container {
+            margin-top: 30px;
+        }
+        .person {
+            margin-bottom: 20px;
+        }
+        .weekdays button {
+            margin: 5px;
+        }
+        .preference button {
+            margin: 5px;
+        }
+
+        .week-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between the text and buttons */
+        }
+
+        .weekdays {
+            display: flex;
+            gap: 5px; /* Space between the buttons */
+        }
+
+        button {
+            /* Optional styling for buttons */
+            padding: 10px 10px;
+        }
+
+        table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+        }
+        th, td {
+            text-align: center;
+            padding: 15px;
+            font-size: 1rem;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+        td {
+            background-color: #e9ecef;
+            color: #343a40;
+        }
+        .table-responsive {
+            margin-top: 10px;
+        }
+
+        .navbar {
+            padding: 20px;
+            background-color: #BDC4A7;
+            color: #2F2F2F;
+        }
+
+        body {
+            background-color: #F3F9D2;
+            color: #2F2F2F;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="container-fluid">
+            <h3>ASSET - Automatic Scheduling System for Emily's Team</h3>
+        </div>
+    </nav>
+
+<div class="container">
+    <!-- Name input section -->
+    <div id="name-input-section">
+        <div class="mb-3 d-flex align-items-center">
+            <label for="person1-name" class="form-label me-2">Person 1 Name:</label>
+            <input type="text" class="form-control w-50" id="person1-name" placeholder="Enter Name">
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="person2-name" class="form-label me-2">Person 2 Name:</label>
+            <input type="text" class="form-control w-50" id="person2-name" placeholder="Enter Name">
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="person3-name" class="form-label me-2">Person 3 Name:</label>
+            <input type="text" class="form-control w-50" id="person3-name" placeholder="Enter Name">
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="person4-name" class="form-label me-2">Person 4 Name:</label>
+            <input type="text" class="form-control w-50" id="person4-name" placeholder="Enter Name">
+        </div>
+    
+        <!-- Submit Button -->
+        <button id="submit-names" class="btn btn-primary">Submit Names</button>
+    </div>
+    
+
+    <!-- Person 1 -->
+    <button id="toggle-person1" class="btn btn-secondary mb-2">Hide Person 1</button>
+    <div class="person" id="person1-container" style="display: none;">
+        <div class="preference mb-3">
+            <label class="form-check-label me-3">
+                <input type="radio" name="person1-pref" id="person1-pref1" class="form-check-input" required checked>
+                3 days in a row
+            </label>
+        
+            <label class="form-check-label">
+                <input type="radio" name="person1-pref" id="person1-pref2" class="form-check-input" required>
+                2 days in a row + 1 day
+            </label>
+        </div>
+        
+        <div class="days-selector">
+            <div class="week-container">
+                <span>Week 1</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="1" data-day="Mon" data-week="1">Mon</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Tue" data-week="1">Tue</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Wed" data-week="1">Wed</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Thu" data-week="1">Thu</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Fri" data-week="1">Fri</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sat" data-week="1">Sat</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sun" data-week="1">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 2</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="1" data-day="Mon" data-week="2">Mon</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Tue" data-week="2">Tue</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Wed" data-week="2">Wed</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Thu" data-week="2">Thu</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Fri" data-week="2">Fri</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sat" data-week="2">Sat</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sun" data-week="2">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 3</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="1" data-day="Mon" data-week="3">Mon</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Tue" data-week="3">Tue</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Wed" data-week="3">Wed</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Thu" data-week="3">Thu</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Fri" data-week="3">Fri</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sat" data-week="3">Sat</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sun" data-week="3">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 4</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="1" data-day="Mon" data-week="4">Mon</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Tue" data-week="4">Tue</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Wed" data-week="4">Wed</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Thu" data-week="4">Thu</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Fri" data-week="4">Fri</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sat" data-week="4">Sat</button>
+                    <button class="btn btn-success day" data-person="1" data-day="Sun" data-week="4">Sun</button>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <!-- Person 2 -->
+    <button id="toggle-person2" class="btn btn-secondary mb-2">Hide Person 2</button>
+    <div class="person" id="person2-container" style="display: none;">
+        <div class="preference mb-3">
+            <label class="form-check-label me-3">
+                <input type="radio" name="person2-pref" id="person2-pref1" class="form-check-input" required checked>
+                3 days in a row
+            </label>
+
+            <label class="form-check-label">
+                <input type="radio" name="person2-pref" id="person2-pref2" class="form-check-input" required>
+                2 days in a row + 1 day
+            </label>
+        </div>
+
+        <div class="days-selector">
+            <div class="week-container">
+                <span>Week 1</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="2" data-day="Mon" data-week="1">Mon</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Tue" data-week="1">Tue</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Wed" data-week="1">Wed</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Thu" data-week="1">Thu</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Fri" data-week="1">Fri</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sat" data-week="1">Sat</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sun" data-week="1">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 2</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="2" data-day="Mon" data-week="2">Mon</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Tue" data-week="2">Tue</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Wed" data-week="2">Wed</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Thu" data-week="2">Thu</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Fri" data-week="2">Fri</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sat" data-week="2">Sat</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sun" data-week="2">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 3</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="2" data-day="Mon" data-week="3">Mon</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Tue" data-week="3">Tue</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Wed" data-week="3">Wed</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Thu" data-week="3">Thu</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Fri" data-week="3">Fri</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sat" data-week="3">Sat</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sun" data-week="3">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 4</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="2" data-day="Mon" data-week="4">Mon</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Tue" data-week="4">Tue</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Wed" data-week="4">Wed</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Thu" data-week="4">Thu</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Fri" data-week="4">Fri</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sat" data-week="4">Sat</button>
+                    <button class="btn btn-success day" data-person="2" data-day="Sun" data-week="4">Sun</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Person 3 -->
+    <button id="toggle-person3" class="btn btn-secondary mb-2">Hide Person 3</button>
+    <div class="person" id="person3-container" style="display: none;">
+        <div class="preference mb-3">
+            <label class="form-check-label me-3">
+                <input type="radio" name="person3-pref" id="person3-pref1" class="form-check-input" required checked>
+                3 days in a row
+            </label>
+
+            <label class="form-check-label">
+                <input type="radio" name="person3-pref" id="person3-pref2" class="form-check-input" required>
+                2 days in a row + 1 day
+            </label>
+        </div>
+
+        <div class="days-selector">
+            <div class="week-container">
+                <span>Week 1</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="3" data-day="Mon" data-week="1">Mon</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Tue" data-week="1">Tue</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Wed" data-week="1">Wed</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Thu" data-week="1">Thu</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Fri" data-week="1">Fri</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sat" data-week="1">Sat</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sun" data-week="1">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 2</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="3" data-day="Mon" data-week="2">Mon</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Tue" data-week="2">Tue</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Wed" data-week="2">Wed</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Thu" data-week="2">Thu</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Fri" data-week="2">Fri</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sat" data-week="2">Sat</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sun" data-week="2">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 3</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="3" data-day="Mon" data-week="3">Mon</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Tue" data-week="3">Tue</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Wed" data-week="3">Wed</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Thu" data-week="3">Thu</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Fri" data-week="3">Fri</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sat" data-week="3">Sat</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sun" data-week="3">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 4</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="3" data-day="Mon" data-week="4">Mon</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Tue" data-week="4">Tue</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Wed" data-week="4">Wed</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Thu" data-week="4">Thu</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Fri" data-week="4">Fri</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sat" data-week="4">Sat</button>
+                    <button class="btn btn-success day" data-person="3" data-day="Sun" data-week="4">Sun</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Person 4 -->
+    <button id="toggle-person4" class="btn btn-secondary mb-2">Hide Person 4</button>
+    <div class="person" id="person4-container" style="display: none;">
+        <div class="preference mb-3">
+            <label class="form-check-label me-3">
+                <input type="radio" name="person4-pref" id="person4-pref1" class="form-check-input" required checked>
+                3 days in a row
+            </label>
+
+            <label class="form-check-label">
+                <input type="radio" name="person4-pref" id="person4-pref2" class="form-check-input" required>
+                2 days in a row + 1 day
+            </label>
+        </div>
+
+        <div class="days-selector">
+            <div class="week-container">
+                <span>Week 1</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="4" data-day="Mon" data-week="1">Mon</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Tue" data-week="1">Tue</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Wed" data-week="1">Wed</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Thu" data-week="1">Thu</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Fri" data-week="1">Fri</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sat" data-week="1">Sat</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sun" data-week="1">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 2</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="4" data-day="Mon" data-week="2">Mon</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Tue" data-week="2">Tue</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Wed" data-week="2">Wed</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Thu" data-week="2">Thu</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Fri" data-week="2">Fri</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sat" data-week="2">Sat</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sun" data-week="2">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 3</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="4" data-day="Mon" data-week="3">Mon</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Tue" data-week="3">Tue</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Wed" data-week="3">Wed</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Thu" data-week="3">Thu</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Fri" data-week="3">Fri</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sat" data-week="3">Sat</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sun" data-week="3">Sun</button>
+                </div>
+            </div>
+            
+            <div class="week-container">
+                <span>Week 4</span>
+                <div class="weekdays">
+                    <button class="btn btn-success day" data-person="4" data-day="Mon" data-week="4">Mon</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Tue" data-week="4">Tue</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Wed" data-week="4">Wed</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Thu" data-week="4">Thu</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Fri" data-week="4">Fri</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sat" data-week="4">Sat</button>
+                    <button class="btn btn-success day" data-person="4" data-day="Sun" data-week="4">Sun</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Person 5 -->
+    <button id="toggle-person5" class="btn btn-secondary mb-2">Part-time</button>
+    <div class="person" id="person5-container" style="display: none;">
+        <div class="days-selector">
+            <div class="week-container">
+                <span>Select 2:</span>
+                <div class="weekdays">
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Mon">Mon</button>
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Tue">Tue</button>
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Wed">Wed</button>
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Thu">Thu</button>
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Fri">Fri</button>
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Sat">Sat</button>
+                    <button class="btn btn-outline-secondary day" data-person="5" data-day="Sun">Sun</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="schedule">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="week1_1"></td>
+                    <td id="week1_2"></td>
+                    <td id="week1_3"></td>
+                    <td id="week1_4"></td>
+                    <td id="week1_5"></td>
+                    <td id="week1_6"></td>
+                    <td id="week1_7"></td>
+                </tr>
+                <tr>
+                    <td id="week1_8"></td>
+                    <td id="week1_9"></td>
+                    <td id="week1_10"></td>
+                    <td id="week1_11"></td>
+                    <td id="week1_12"></td>
+                    <td id="week1_13"></td>
+                    <td id="week1_14"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="week2_1"></td>
+                    <td id="week2_2"></td>
+                    <td id="week2_3"></td>
+                    <td id="week2_4"></td>
+                    <td id="week2_5"></td>
+                    <td id="week2_6"></td>
+                    <td id="week2_7"></td>
+                </tr>
+                <tr>
+                    <td id="week2_8"></td>
+                    <td id="week2_9"></td>
+                    <td id="week2_10"></td>
+                    <td id="week2_11"></td>
+                    <td id="week2_12"></td>
+                    <td id="week2_13"></td>
+                    <td id="week2_14"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="week3_1"></td>
+                    <td id="week3_2"></td>
+                    <td id="week3_3"></td>
+                    <td id="week3_4"></td>
+                    <td id="week3_5"></td>
+                    <td id="week3_6"></td>
+                    <td id="week3_7"></td>
+                </tr>
+                <tr>
+                    <td id="week3_8"></td>
+                    <td id="week3_9"></td>
+                    <td id="week3_10"></td>
+                    <td id="week3_11"></td>
+                    <td id="week3_12"></td>
+                    <td id="week3_13"></td>
+                    <td id="week3_14"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="week4_1"></td>
+                    <td id="week4_2"></td>
+                    <td id="week4_3"></td>
+                    <td id="week4_4"></td>
+                    <td id="week4_5"></td>
+                    <td id="week4_6"></td>
+                    <td id="week4_7"></td>
+                </tr>
+                <tr>
+                    <td id="week4_8"></td>
+                    <td id="week4_9"></td>
+                    <td id="week4_10"></td>
+                    <td id="week4_11"></td>
+                    <td id="week4_12"></td>
+                    <td id="week4_13"></td>
+                    <td id="week4_14"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Button to generate schedule -->
+<div class="container" id="genSched_cont">
+    <button id="generateScheduleBtn" class="btn btn-primary">Generate Schedule</button>
+    <div>
+        <input type="checkbox" id="Colorise" /> 
+        <label for="selectSchedule">Colorise</label>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+<script>
+
+function filterAvailability(arr, target) {
+    return arr.filter(subArray => !subArray.includes(target));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    var person1 = "Person 1";
+    var person2 = "Person 2";
+    var person3 = "Person 3";
+    var person4 = "Person 4";
+
+    var people = [person1, person2, person3, person4];
+
+    document.getElementById('toggle-person1').style.display = 'none';
+    document.getElementById('toggle-person2').style.display = 'none';
+    document.getElementById('toggle-person3').style.display = 'none';
+    document.getElementById('toggle-person4').style.display = 'none';
+    document.getElementById('toggle-person5').style.display = 'none';
+    document.getElementById('schedule').style.display = 'none';
+    document.getElementById('genSched_cont').style.display = 'none';
+    document.getElementById('generateScheduleBtn').style.display = 'none';
+    // Function to hide the name input section and display the rest
+    document.getElementById('submit-names').addEventListener('click', function() {
+        // Hide name input section
+        document.getElementById('name-input-section').style.display = 'none';
+
+        document.getElementById('toggle-person1').style.display = 'block';
+        document.getElementById('toggle-person2').style.display = 'block';
+        document.getElementById('toggle-person3').style.display = 'block';
+        document.getElementById('toggle-person4').style.display = 'block';
+        document.getElementById('toggle-person5').style.display = 'block';
+        document.getElementById('generateScheduleBtn').style.display = 'block';
+        document.getElementById('genSched_cont').style.display = 'block';
+
+        // Show the rest of the sections
+        document.getElementById('person1-container').style.display = 'none';
+        document.getElementById('person2-container').style.display = 'none';
+        document.getElementById('person3-container').style.display = 'none';
+        document.getElementById('person4-container').style.display = 'none';
+        document.getElementById('person5-container').style.display = 'none';
+
+        // Update the titles with the names entered
+        document.getElementById('toggle-person1').innerHTML = document.getElementById('person1-name').value || "Person 1";
+        document.getElementById('toggle-person2').innerHTML = document.getElementById('person2-name').value || "Person 2";
+        document.getElementById('toggle-person3').innerHTML = document.getElementById('person3-name').value || "Person 3";
+        document.getElementById('toggle-person4').innerHTML = document.getElementById('person4-name').value || "Person 4";
+
+        // Create variables
+        for (var h = 1; h < 5; h++) {
+            if (document.getElementById('person' + h + '-name').value == "") {
+                people[h - 1] = "Person " + h;
+            } else {
+                people[h - 1] = document.getElementById('person' + h + '-name').value;
+            }
+        }
+    });
+
+    const buttons = document.querySelectorAll('.weekdays .day[data-person="5"]');
+
+
+    // Toggle visibility of person sections
+    function togglePersonVisibility(personId) {
+        const personContainer = document.getElementById(personId);
+        const button = document.getElementById('toggle-' + personId);
+        if (personContainer.style.display === 'none') {
+            personContainer.style.display = 'block';
+        } else {
+            personContainer.style.display = 'none';
+        }
+    }
+
+    document.getElementById('toggle-person1').addEventListener('click', function() {
+        togglePersonVisibility('person1-container');
+    });
+    document.getElementById('toggle-person2').addEventListener('click', function() {
+        togglePersonVisibility('person2-container');
+    });
+    document.getElementById('toggle-person3').addEventListener('click', function() {
+        togglePersonVisibility('person3-container');
+    });
+    document.getElementById('toggle-person4').addEventListener('click', function() {
+        togglePersonVisibility('person4-container');
+    });
+    document.getElementById('toggle-person5').addEventListener('click', function() {
+        togglePersonVisibility('person5-container');
+    });
+
+    document.querySelectorAll('.day').forEach(button => {
+        button.addEventListener('click', function() {
+            // Ensure this function doesn't affect Person 5 buttons
+            if (!this.hasAttribute('data-person') || this.getAttribute('data-person') !== '5') {
+                this.classList.toggle('btn-success'); // Removes green if present
+                this.classList.toggle('btn-danger');  // Adds red if not present
+            }
+        });
+    });
+
+    // Second function (for Person 5 buttons only)
+    document.querySelectorAll('.day[data-person="5"]').forEach(button => {
+        button.addEventListener('click', function() {
+            // Toggle btn-success (green button) and btn-outline-secondary (outline button) classes
+            this.classList.toggle('btn-success'); // Toggles green color (selected state)
+            this.classList.toggle('btn-outline-secondary'); // Toggles outline color (unselected state)
+        });
+    });
+
+
+    // Function to handle the button click
+    function generateSchedule() {
+
+        const twoPlusOne = [
+            [0,1,3], [0,1,4], [0,1,5], [0,1,6], [0,2,3], [0,3,4], [0,4,5], [0,5,6],
+            [1,2,4], [1,2,5], [1,2,6], [1,3,4], [1,4,5], [1,5,6], [2,3,5], [2,3,6],
+            [2,4,5], [2,5,6], [3,4,6], [3,5,6]
+        ];
+
+        const threeDays = [
+            [0,1,2], [1,2,3], [2,3,4], [3,4,5], [4,5,6]
+        ];
+
+        if (document.getElementById("person1-pref1").checked) {
+            a_av = [threeDays, threeDays, threeDays, threeDays];
+        } else {
+            a_av = [twoPlusOne, twoPlusOne, twoPlusOne, twoPlusOne];
+        }
+        if (document.getElementById("person2-pref1").checked) {
+            b_av = [threeDays, threeDays, threeDays, threeDays];
+        } else {
+            b_av = [twoPlusOne, twoPlusOne, twoPlusOne, twoPlusOne];
+        }
+        if (document.getElementById("person3-pref1").checked) {
+            c_av = [threeDays, threeDays, threeDays, threeDays];
+        } else {
+            c_av = [twoPlusOne, twoPlusOne, twoPlusOne, twoPlusOne];
+        }
+        if (document.getElementById("person4-pref1").checked) {
+            d_av = [threeDays, threeDays, threeDays, threeDays];
+        } else {
+            d_av = [twoPlusOne, twoPlusOne, twoPlusOne, twoPlusOne];
+        }
+
+        const dangerButtons = document.querySelectorAll(".btn-danger");
+        const dayMapping = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        
+        // Iterate over the filtered buttons and log their details
+        dangerButtons.forEach(button => {
+            if (button.dataset.person == "1") {
+                a_av[(button.dataset.week - 1)] = filterAvailability(a_av[(button.dataset.week - 1)], dayMapping.indexOf(button.dataset.day));
+            } else if (button.dataset.person == "2") {
+                b_av[(button.dataset.week - 1)] = filterAvailability(b_av[(button.dataset.week - 1)], dayMapping.indexOf(button.dataset.day));
+            } else if (button.dataset.person == "3") {
+                c_av[(button.dataset.week - 1)] = filterAvailability(c_av[(button.dataset.week - 1)], dayMapping.indexOf(button.dataset.day));
+            } else if (button.dataset.person == "4") {
+                d_av[(button.dataset.week - 1)] = filterAvailability(d_av[(button.dataset.week - 1)], dayMapping.indexOf(button.dataset.day));
+            }
+        });
+
+        // Get all buttons
+        const pt_buttons = document.querySelectorAll('.day[data-person="5"]');
+        let pt_days = [];
+
+        // Function to check selected buttons
+        pt_buttons.forEach(button => {
+            if (button.classList.contains("btn-success")) { 
+                pt_days.push(button.dataset.day);
+            }
+        });
+
+        if (pt_days.length > 2) {
+            alert("Too many part-time days selected.");
+            return;
+        } else if (pt_days.length < 2) {
+            alert("Please select 2 part-time days.");
+            return;
+        }
+
+        let days = [2,2,2,2,2,2,2];
+
+        for (let i = 0; i < pt_days.length; i++) {
+            const index = dayMapping.indexOf(pt_days[i]);
+
+            if (index !== -1) {
+                days[index]--;  // Decrease the corresponding day
+            }
+        }
+
+        var weeks = [[], [], [], []];
+
+        for (let week = 0; week < 4; week++) {
+            let found = false;
+            for (let a of a_av[week]) {
+                for (let b of b_av[week]) {
+                    for (let c of c_av[week]) {
+                        for (let d of d_av[week]) {
+                            let curr_days = [...days]; 
+                            let concat_arr = a.concat(b,c,d);
+                            for (let x of concat_arr) {
+                                curr_days[x] -= 1;
+                            }
+                            if (curr_days.every(num => num === 0)) {
+                                found = true;
+                                weeks[week].push([a,b,c,d]);
+                            }
+                        }
+                    }
+                }
+            }
+            if (found == false) {
+                alert("Week " + (week + 1) + " has no possible arrangements.\nPlease reduce the constraints.");
+                return;
+            }
+        }
+
+        // weeks[select week][select option][select person] -> 3 shifts
+
+        function* weekCombinations(weeks) {
+            for (let w1 of weeks[0]) {
+                for (let w2 of weeks[1]) {
+                    for (let w3 of weeks[2]) {
+                        for (let w4 of weeks[3]) {
+
+                            let wks = [0, 0, 0, 0];
+
+                            for (let num = 0; num < 4; num++) {
+                                wks[num] = [w1, w2, w3, w4].reduce((count, week) => 
+                                    count + week[num].filter(i => i === 5 || i === 6).length, 0);
+                            }
+
+                            if (new Set(wks).size === 1) { // Ensure all values in wks are equal
+                                let m = [w1, w2, w3, w4];
+
+                                // Compute intersections for each pair (a_b, a_c, etc.)
+                                let pairCounts = [];
+                                let indices = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]; // Equivalent to combinations(range(4), 2)
+
+                                for (let [i, j] of indices) {
+                                    pairCounts.push(m.reduce((sum, week) => 
+                                        sum + new Set(week[i].filter(x => week[j].includes(x))).size, 0
+                                    ));
+                                }
+
+                                if (Math.max(...pairCounts) - Math.min(...pairCounts) <= 2) {
+                                    console.log(m);
+                                    yield m;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        weekCombinations(weeks);
+
+
+        document.getElementById('toggle-person1').style.display = 'none';
+        document.getElementById('toggle-person2').style.display = 'none';
+        document.getElementById('toggle-person3').style.display = 'none';
+        document.getElementById('toggle-person4').style.display = 'none';
+        document.getElementById('toggle-person5').style.display = 'none';
+        document.getElementById('schedule').style.display = 'block';
+        document.getElementById('generateScheduleBtn').style.display = 'none';
+        document.getElementById('genSched_cont').style.display = 'none';
+        document.getElementById('person1-container').style.display = 'none';
+        document.getElementById('person2-container').style.display = 'none';
+        document.getElementById('person3-container').style.display = 'none';
+        document.getElementById('person4-container').style.display = 'none';
+        document.getElementById('person5-container').style.display = 'none';
+        document.getElementById('navbar').style.display = 'none';
+
+        
+
+
+        // Asign the schedule based on the arrays
+        var sample_schedule = [
+            [[0, 1, 2], [1, 2, 3], [3, 4, 5], [4, 5, 6]],
+            [[4, 5, 6], [0, 1, 5], [2, 3, 4], [1, 2, 3]],
+            [[3, 4, 5], [0, 1, 2], [1, 5, 6], [2, 3, 4]],
+            [[1, 2, 3], [4, 5, 6], [2, 3, 4], [0, 1, 5]]
+        ];
+
+        for (var i = 0; i < 4; i++) {
+            // Iterate over each inner sub-array
+            for (var j = 0; j < 4; j++) {
+                for (var k = 0; k < 3; k++) {
+                    // Access the first element of the inner array (i.e., j[0])
+                    if (document.getElementById("week" + (i+1) + "_" + (sample_schedule[i][j][k] + 1)).innerHTML == "") {
+                        document.getElementById("week" + (i+1) + "_" + (sample_schedule[i][j][k] + 1)).innerHTML = people[j];
+                    } else {
+                        document.getElementById("week" + (i+1) + "_" + (sample_schedule[i][j][k] + 8)).innerHTML = people[j];
+                    }
+                }
+            }
+        }
+
+        var colorise = document.getElementById("Colorise");
+
+        if (colorise.checked) {
+            var hexColors = [
+                "rgba(255, 105, 97, 0.5)",   // Pastel Red
+                "rgba(119, 221, 119, 0.5)",  // Pastel Green
+                "rgba(135, 206, 250, 0.5)",  // Pastel Blue
+                "rgba(255, 236, 139, 0.5)",  // Pastel Yellow
+                "rgba(186, 85, 211, 0.5)",   // Pastel Purple
+            ];
+
+            people.push("");
+
+            for (var i = 0; i < 4; i++) {
+                // Iterate over each inner sub-array
+                for (var j = 0; j < 14; j++) {
+                    table_element = document.getElementById("week" + (i+1) + "_" + (j+1));
+                    table_element.style.backgroundColor = hexColors[people.indexOf(table_element.innerHTML)];
+                }
+            }
+        }
+
+    }
+
+    // Attach the function to the button
+    document.getElementById('generateScheduleBtn').addEventListener('click', generateSchedule);
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 
+    #############################################################
+    ##### GENERATE SCHEDULE #####################################
+    #############################################################
+    */
+
+
+
+
+});
+
+</script>
+
+</body>
+</html>
