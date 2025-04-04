@@ -125,23 +125,28 @@
         <button id="submit-names" class="btn btn-primary">Submit Names</button>
     </div>
     
-
+    <div id="instruction">
+        <p>Click on each person to adjust their availability and shift pattern preference.</p>
+        <p><i>Tip: Block two full weekends per person to ensure a balanced distribution of working weekends per month.</i></p>
+    </div>
+    
     <!-- Person 1 -->
     <button id="toggle-person1" class="btn btn-secondary mb-2">Hide Person 1</button>
     <div class="person" id="person1-container" style="display: none;">
         <div class="preference mb-3">
             <label class="form-check-label me-3">
-                <input type="radio" name="person1-pref" id="person1-pref1" class="form-check-input" required checked>
+                <input type="radio" name="person1-pref" id="person1-pref1" class="form-check-input" required>
                 3 days in a row
             </label>
         
             <label class="form-check-label">
-                <input type="radio" name="person1-pref" id="person1-pref2" class="form-check-input" required>
+                <input type="radio" name="person1-pref" id="person1-pref2" class="form-check-input" required checked>
                 2 days in a row + 1 day
             </label>
         </div>
         
         <div class="days-selector">
+            <p>Please select <b>unavailable</b> days:</p>
             <div class="week-container">
                 <span>Week 1</span>
                 <div class="weekdays">
@@ -203,17 +208,18 @@
     <div class="person" id="person2-container" style="display: none;">
         <div class="preference mb-3">
             <label class="form-check-label me-3">
-                <input type="radio" name="person2-pref" id="person2-pref1" class="form-check-input" required checked>
+                <input type="radio" name="person2-pref" id="person2-pref1" class="form-check-input" required>
                 3 days in a row
             </label>
 
             <label class="form-check-label">
-                <input type="radio" name="person2-pref" id="person2-pref2" class="form-check-input" required>
+                <input type="radio" name="person2-pref" id="person2-pref2" class="form-check-input" required checked>
                 2 days in a row + 1 day
             </label>
         </div>
 
         <div class="days-selector">
+            <p>Please select <b>unavailable</b> days:</p>
             <div class="week-container">
                 <span>Week 1</span>
                 <div class="weekdays">
@@ -273,17 +279,18 @@
     <div class="person" id="person3-container" style="display: none;">
         <div class="preference mb-3">
             <label class="form-check-label me-3">
-                <input type="radio" name="person3-pref" id="person3-pref1" class="form-check-input" required checked>
+                <input type="radio" name="person3-pref" id="person3-pref1" class="form-check-input" required>
                 3 days in a row
             </label>
 
             <label class="form-check-label">
-                <input type="radio" name="person3-pref" id="person3-pref2" class="form-check-input" required>
+                <input type="radio" name="person3-pref" id="person3-pref2" class="form-check-input" required checked>
                 2 days in a row + 1 day
             </label>
         </div>
 
         <div class="days-selector">
+            <p>Please select <b>unavailable</b> days:</p>
             <div class="week-container">
                 <span>Week 1</span>
                 <div class="weekdays">
@@ -343,17 +350,18 @@
     <div class="person" id="person4-container" style="display: none;">
         <div class="preference mb-3">
             <label class="form-check-label me-3">
-                <input type="radio" name="person4-pref" id="person4-pref1" class="form-check-input" required checked>
+                <input type="radio" name="person4-pref" id="person4-pref1" class="form-check-input" required>
                 3 days in a row
             </label>
 
             <label class="form-check-label">
-                <input type="radio" name="person4-pref" id="person4-pref2" class="form-check-input" required>
+                <input type="radio" name="person4-pref" id="person4-pref2" class="form-check-input" required checked>
                 2 days in a row + 1 day
             </label>
         </div>
 
         <div class="days-selector">
+            <p>Please select <b>unavailable</b> days:</p>
             <div class="week-container">
                 <span>Week 1</span>
                 <div class="weekdays">
@@ -666,6 +674,7 @@ function showLoader() {
     document.getElementById('person3-container').style.display = 'none';
     document.getElementById('person4-container').style.display = 'none';
     document.getElementById('person5-container').style.display = 'none';
+    document.getElementById('instruction').style.display = 'none';
 }
 
 function hideLoader() {
@@ -675,6 +684,7 @@ function hideLoader() {
 document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('loader').style.display = 'none';
+    document.getElementById('instruction').style.display = 'none';
     document.getElementById('schedule_options').style.display = 'none';
     document.getElementById('toggle-person1').style.display = 'none';
     document.getElementById('toggle-person2').style.display = 'none';
@@ -689,6 +699,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hide name input section
         document.getElementById('name-input-section').style.display = 'none';
 
+        document.getElementById('instruction').style.display = 'block';
         document.getElementById('toggle-person1').style.display = 'block';
         document.getElementById('toggle-person2').style.display = 'block';
         document.getElementById('toggle-person3').style.display = 'block';
@@ -776,6 +787,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function clearAllButSchedule() {
+        document.getElementById('instruction').style.display = 'none';
         document.getElementById('toggle-person1').style.display = 'none';
         document.getElementById('toggle-person2').style.display = 'none';
         document.getElementById('toggle-person3').style.display = 'none';
@@ -1163,7 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return;
         } else {
-            alert("No possible arrangements. Please reduce the constraints.");
+            alert("No possible arrangements. Please reduce the constraints.\n(Possible reason: No balanced distribution of weekend shifts possible.)");
             location.reload();
             return;
         }
